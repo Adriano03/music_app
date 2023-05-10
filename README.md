@@ -13,6 +13,7 @@ Aula 1
 - Criação e configurações do MusicAppColors com as cores do app;
 - Criação e configurações do MusicAppTextStyle com estilos de texto do app;
 
+
 Aula 2
 
 - Construir initial binding para ApiService, AudioPlayerServiceImpl e MusicPlayerController;
@@ -22,3 +23,16 @@ Aula 2
 - Criação do MusicApp que retorna GetMaterialApp com as configurações do app;
 - Criar o .env service e configurar;
 - Trocar o MaterialApp do main.dart pelo MusicApp;
+
+
+Aula 3
+
+- Criar GenreModel contendo img, title e searchString e o método fromJson;
+- Criar MusicModel contendo img, title, url e duration e o método fromJson;
+- Criar GenreDetailsModel contendo a extensão de GenreModel e mais a lista de musicas;
+- Criar a API Service para recuperar os gêneros, detalhes da música e músicas por gênero;
+- Implementação do Audio Player Service;
+- Implementação da tela genreListScreen com widgets personalizados;
+
+
+
