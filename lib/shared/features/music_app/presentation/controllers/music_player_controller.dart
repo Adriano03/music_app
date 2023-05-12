@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:music_app/core/app/music_app_colors.dart';
 import 'package:music_app/core/errors/exceptions.dart';
 import 'package:music_app/core/extensions/media_query_extension.dart';
 import 'package:music_app/core/mixins/snack_bar_mixin.dart';
@@ -48,7 +47,7 @@ class MusicPlayerController with SnackBarMixin {
   Stream<Duration> get getCurrentPositionStream => _audioPlayer.getPositionStream();
 
   // Função para buscar a posição especifica da música. (Quando arrasta a música para determinada duração);
-  Future<void> seek(int seekToDuratuinInSeconds) => _audioPlayer.seek(seekToDuratuinInSeconds);
+  Future<void> seek(int seekToDurationInSeconds) => _audioPlayer.seek(seekToDurationInSeconds);
 
   // Função para carregar nova playlist;
   void loadPlaylist(List<MusicModel> newPlayist, List<MusicModel> playlistToChange) {

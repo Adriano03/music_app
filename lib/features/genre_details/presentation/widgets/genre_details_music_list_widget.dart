@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:music_app/core/app/music_app_colors.dart';
 import 'package:music_app/features/genre_details/presentation/controllers/genre_details_controller.dart';
 import 'package:music_app/shared/features/music_app/presentation/controllers/music_player_controller.dart';
+import 'package:music_app/shared/features/music_app/presentation/widgets/circular_progress_indicator_widget.dart';
 import 'package:music_app/shared/models/music_model.dart';
 import 'package:music_app/shared/widgets/app_music_error_widget.dart';
-import 'package:music_app/shared/widgets/circular_progress_indicator_widget.dart';
 import 'package:music_app/shared/widgets/img_and_title_row_widget.dart';
 import 'package:music_app/shared/widgets/text_widget.dart';
 
