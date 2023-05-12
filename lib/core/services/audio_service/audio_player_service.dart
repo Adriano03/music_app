@@ -12,7 +12,7 @@ abstract class AudioPlayerService {
   Future<void> playMusic(String audioAsset);
 
   // Quando pausa a música;
-  Future<void> pauseMusica();
+  Future<void> pauseMusic();
 
   // Quando a música for pausada pode ser iniciada de onde parou;
   Future<void> resumeMusic();

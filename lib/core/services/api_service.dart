@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
-import 'package:music_app/core/erros/exceptions.dart';
+import 'package:music_app/core/errors/exceptions.dart';
 import 'package:music_app/shared/models/genre_details_model.dart';
 import 'package:music_app/shared/models/genre_model.dart';
 

@@ -2,7 +2,8 @@
 
 Projeto Flutter - music_app
 
-Projeto desenvolvido pelo canal Flutter Dicas, o app é um player de música.
+Projeto desenvolvido pelo canal Flutter Dicas, o app é um player de música que consume o banco de dados local jserver.
+O app contém dois gêneros onde se separam em várias músicas cada gênero. A tela inicial é listada os gêneros, clicando abre a lista de músicas. Clicando em alguma música ira abrir a tela de detalhes da música e apertando play irá tocar e o usuário pode interagir com o aplicativo sem que a música seja pausada ou finalizada sem que a intenção seja do usuário, voltando uma tela o player da música é exibido na parte debaixo da tela, onde o usuário pode controlar quaisquer comando disponivel. 
 
 ## Getting Started
 
@@ -33,6 +34,10 @@ Aula 3
 - Criar a API Service para recuperar os gêneros, detalhes da música e músicas por gênero;
 - Implementação do Audio Player Service;
 - Implementação da tela genreListScreen com widgets personalizados;
+
+Aula 4
+
+- Implementação do widget Mini Music Player; 
 
 
 

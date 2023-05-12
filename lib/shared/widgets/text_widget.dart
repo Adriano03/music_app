@@ -32,7 +32,7 @@ class TextWidget extends StatelessWidget {
     super.key,
     TextStyle? textStyle,
     this.textAlign,
-  }) : style = textStyle ?? MusicAppTextStyle.getNormalBoldStyle;
+  }) : style = textStyle ?? MusicAppTextStyle.getNormalStyle;
 
   TextWidget.small(
     this.text, {

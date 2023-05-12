@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:get/get.dart';
-import 'package:music_app/core/erros/exceptions.dart';
+import 'package:music_app/core/errors/exceptions.dart';
 
 import './audio_player_service.dart';
 
@@ -12,9 +12,9 @@ class AudioPlayerServiceImpl extends GetxService implements AudioPlayerService {
   AudioPlayerServiceImpl(this.audioPlayer);
 
   Future<void> callAudioPlayerServiceTryAndCatchFunciton(
-      Future<void> Function() tryFunciton, String audioPlayerExceptionMessage) async {
+      Future<void> Function() tryFunction, String audioPlayerExceptionMessage) async {
     try {
-      await tryFunciton();
+      await tryFunction();
     } catch (e, s) {
       final errorMessage = audioPlayerExceptionMessage;
       log(errorMessage, error: e, stackTrace: s);
@@ -46,7 +46,7 @@ class AudioPlayerServiceImpl extends GetxService implements AudioPlayerService {
   }
 
   @override
-  Future<void> pauseMusica() {
+  Future<void> pauseMusic() {
     return callAudioPlayerServiceTryAndCatchFunciton(
       () => audioPlayer.pause(),
       'Erro ao pausar a música',
