@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/core/app/music_app_colors.dart';
 import 'package:music_app/shared/widgets/app_music_error_widget.dart';
+import 'package:music_app/shared/widgets/circular_progress_indicator_widget.dart';
 import 'package:music_app/shared/widgets/text_widget.dart';
 
 class ScreenWidget extends StatelessWidget {
@@ -31,7 +32,7 @@ class ScreenWidget extends StatelessWidget {
           child: isLoading || error != null
               ? Center(
                   child: isLoading
-                      ? const CircularProgressIndicator()
+                      ? const CircularProgressIndicatorWidget()
                       : AppMusicErrorWidget(
                           error: error!,
                           onTryAgain: onTryAgain,

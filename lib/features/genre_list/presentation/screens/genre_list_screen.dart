@@ -21,6 +21,8 @@ class GenreListScreen extends StatelessWidget {
       () => ScreenWidget(
         isLoading: false,
         title: 'Lista de Gêneros',
+        error: genreListController.getError,
+        onTryAgain: () => genreListController.getGenreList(),
         child: Column(
           children: [
             Expanded(
@@ -47,8 +49,7 @@ class GenreListScreen extends StatelessWidget {
                 ),
               ),
             ),
-            if (musicPlayerCtrl.getPlaylistPlaying.isNotEmpty)
-            const MiniMusicPlayerWidget(),
+            if (musicPlayerCtrl.getPlaylistPlaying.isNotEmpty) const MiniMusicPlayerWidget(),
           ],
         ),
       ),

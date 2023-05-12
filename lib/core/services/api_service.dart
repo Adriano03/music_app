@@ -39,7 +39,7 @@ class ApiService extends DioForNative {
       log('Erro ao fazer o get dos detalhes do gênero musical.',
           error: dioError, stackTrace: s);
       throw ApiException(
-        message: 'Erro ao fazer o get dos detalhes do gênero musical.',
+        message: 'Erro ao carregar detalhes do gênero musical.',
         statusCode: dioError.response?.statusCode,
       );
     } catch (error, s) {
