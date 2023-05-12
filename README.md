@@ -40,6 +40,7 @@ Aula 4
 
 - Implementação do MusicPlayerController;
 - Implementação do widget Mini Music Player; 
-- Implementação da tela de detalhes da música: GenreDetailsScreen;
+- Implementação da tela de detalhes do gênero onde é exibido a lista de músicas: GenreDetailsScreen;
+- Criação da modal para abrir os detalhes da música quando clicado;
 
 

@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:music_app/core/app/music_app_colors.dart';
 import 'package:music_app/core/errors/exceptions.dart';
+import 'package:music_app/core/extensions/media_query_extension.dart';
 import 'package:music_app/core/mixins/snack_bar_mixin.dart';
 import 'package:music_app/core/services/audio_service/audio_player_service.dart';
+import 'package:music_app/shared/features/music_app/presentation/widgets/music_player_widget.dart';
 import 'package:music_app/shared/models/music_model.dart';
 
 class MusicPlayerController with SnackBarMixin {
@@ -32,10 +36,10 @@ class MusicPlayerController with SnackBarMixin {
   int? get getCurrentMusicIndexPlaying => currentMusicIndexPlaying.value;
 
   // Lista de músicas da playlist atual;
-  final RxList<MusicModel> _playlistPlayin = <MusicModel>[].obs;
+  final RxList<MusicModel> _playlistPlaying = <MusicModel>[].obs;
 
   // Getter para obter a lista de músicas atual;
-  List<MusicModel> get getPlaylistPlaying => _playlistPlayin;
+  List<MusicModel> get getPlaylistPlaying => _playlistPlaying;
 
   // Lista de música selecionada;
   final List<MusicModel> selectedPlayList = [];
@@ -79,13 +83,13 @@ class MusicPlayerController with SnackBarMixin {
   Future<void> loadMusic() async {
     return onCallMusicPlayerTryAndCatchFunction(() async {
       // Carrega a lista (carrega nova lista de música quando usuário troca o gênero);
-      loadPlaylist(selectedPlayList, _playlistPlayin);
+      loadPlaylist(selectedPlayList, _playlistPlaying);
 
       // Para música se tiver alguma tocando;
       await stopMusic();
 
       // Da o play na música;
-      await playMusic(_playlistPlayin[getCurrentMusicIndexPlaying ?? 0].url);
+      await playMusic(_playlistPlaying[getCurrentMusicIndexPlaying ?? 0].url);
     });
   }
 
@@ -100,7 +104,7 @@ class MusicPlayerController with SnackBarMixin {
   // Próxima música;
   Future<void> skipTrack() async {
     if (getCurrentMusicIndexPlaying != null) {
-      if (getCurrentMusicIndexPlaying! < _playlistPlayin.length - 1) {
+      if (getCurrentMusicIndexPlaying! < _playlistPlaying.length - 1) {
         currentMusicIndexPlaying.value = currentMusicIndexPlaying.value! + 1;
       } else {
         // Voltar para a primeira música se estiver na última;
@@ -112,7 +116,7 @@ class MusicPlayerController with SnackBarMixin {
 
   MusicModel? get getCurrentPlayingMusic {
     if (getCurrentMusicIndexPlaying != null) {
-      return _playlistPlayin[getCurrentMusicIndexPlaying!];
+      return _playlistPlaying[getCurrentMusicIndexPlaying!];
     }
     return null;
   }
@@ -123,7 +127,7 @@ class MusicPlayerController with SnackBarMixin {
       currentMusicIndexPlaying.value = currentMusicIndexPlaying.value! - 1;
     } else {
       // Se estiver na primeira música, quando aperta o botão back, vai até a ultima música;
-      currentMusicIndexPlaying.value = _playlistPlayin.length - 1;
+      currentMusicIndexPlaying.value = _playlistPlaying.length - 1;
     }
     await loadMusic();
   }
@@ -133,13 +137,11 @@ class MusicPlayerController with SnackBarMixin {
   }
 
   // Quando abrir o Player quando a música estiver pausada, deve mostrar onde ela pausou;
-  Future<void> loadCurrentDuration() async {
+  Future<void> loadCurrentMusicDuration() async {
     if (!isPlaying.value) {
       currentMusicDuration.value = await _audioPlayer.getCurrentPosition;
     }
   }
-
-  Future<void> showMusicPlayer(BuildContext context) async {}
 
   // Função para tocar a música selecionada pelo usuário;
   void playSelectedMusic(BuildContext context, int musicIndex) {
@@ -150,5 +152,24 @@ class MusicPlayerController with SnackBarMixin {
     loadMusic();
 
     showMusicPlayer(context);
+  }
+
+  Future<void> showMusicPlayer(BuildContext context) async {
+    loadCurrentMusicDuration();
+
+    showBottomSheet(
+      context: context,
+      builder: (_) => Obx(
+        () => MusicPlayerWidget(
+          music: _playlistPlaying[getCurrentMusicIndexPlaying ?? 0],
+        ),
+      ),
+      constraints: BoxConstraints(
+        maxHeight: context.getHeight - context.getTopPadding,
+
+      ),
+      backgroundColor: Colors.transparent,
+      enableDrag: true,
+    );
   }
 }

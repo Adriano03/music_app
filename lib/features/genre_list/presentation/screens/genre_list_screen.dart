@@ -19,7 +19,7 @@ class GenreListScreen extends StatelessWidget {
 
     return Obx(
       () => ScreenWidget(
-        isLoading: false,
+        isLoading: genreListController.getIsLoading,
         title: 'Lista de Gêneros',
         error: genreListController.getError,
         onTryAgain: () => genreListController.getGenreList(),
